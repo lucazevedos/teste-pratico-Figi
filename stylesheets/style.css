@@ -126,6 +126,9 @@ aside {
     margin-bottom: -30px;
     font-size: 14px;
 }
+#addToCart:hover {
+    box-shadow: 0 0 5px 0 var(--red);
+}
 #addToCart.added {
     background-color: var(--red);
     color: #fff;
@@ -269,6 +272,9 @@ aside {
   background-color: var(--red);
   color: #fff;
   border-radius: 25px; 
+}
+.btn-new-order:hover {
+  background-color: #a5310e;
 }
 .footer-cart .btn:hover {
   background-color: #a5310e;
