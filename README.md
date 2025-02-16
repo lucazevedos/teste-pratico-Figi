@@ -32,10 +32,10 @@ O código-fonte está disponível no GitHub:
 
 ## 📷 Captura de Tela
 ### 📌 Versão Desktop
-![Preview do Projeto](./preview.jpg)
+![Preview do Projeto](./design/preview.png)
 
 ### 📌 Versão Mobile
-![Preview Mobile](./preview-mobile.png)
+![Preview Mobile](./design/preview-mobile.png)
 
 ---
 
