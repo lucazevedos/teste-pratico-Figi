@@ -1,12 +1,21 @@
-import { loadProducts, products } from '../data/products.js';
+import { loadProducts, products } from './products.js';
 import { addToCart } from './addCart.js';
 import { getCart } from './getCart.js';
 
-
+// Display products
 async function displayProducts() {
-    await loadProducts(); 
-    console.log(products);
     const productList = document.getElementById('product-list'); 
+
+    const skeleton = `<div class="skeleton-card skeleton">
+            <div class="skeleton-img skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-button skeleton"></div>
+        </div>`;
+
+    productList.innerHTML = skeleton.repeat(9);
+
+    await loadProducts(); 
     productList.innerHTML = ''; 
 
     products.forEach(product => {
@@ -35,7 +44,7 @@ async function displayProducts() {
     });
 }
 
-
+// Change button
 function changeButton(item) {
     const buttons = document.querySelectorAll("#addToCart");
     buttons.forEach((button) => {
@@ -49,6 +58,7 @@ function changeButton(item) {
         }
     });
 }
+// Reset button
 function resetButton(productId) {
     const button = document.querySelector(`[data-product-id="${productId}"]`);
     if (button) {
@@ -59,6 +69,7 @@ function resetButton(productId) {
         `;
     }
 }
+// Check if cart is visible
 function checkCartVisibility() {
     const cartSection = document.getElementById("cart");
     const goToCartButton = document.querySelector(".go-to-cart");
@@ -71,6 +82,7 @@ function checkCartVisibility() {
         goToCartButton.classList.remove("hidden");
     }
 }
+// Display cart items
 function displayCart() {
     const cart = getCart();
     const cartContainer = document.getElementById("cart-list");
@@ -107,6 +119,7 @@ function displayCart() {
     document.querySelector('.cart-items-count').textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
     cart.forEach(item => changeButton(item));
 }
+// Increase item quantity
 window.plusCart = function(productId) {
     let cart = getCart();
     const existingProduct = cart.find(item => item.id === productId);
@@ -114,6 +127,7 @@ window.plusCart = function(productId) {
     localStorage.setItem("cart", JSON.stringify(cart));
     displayCart();
 }
+// Decrease item quantity
 window.minusCart =  function(productId) {
     let cart = getCart();
     const existingProduct = cart.find(item => item.id === productId);
@@ -126,18 +140,19 @@ window.minusCart =  function(productId) {
         resetButton(productId);
     }
 }
+// Remove item from cart
 window.removeFromCart = function(productId) {
     let cart = getCart();
     cart = cart.filter(item => item.id !== productId);
     localStorage.setItem("cart", JSON.stringify(cart));
     displayCart();
 };
-
+// Load products and display them
 document.addEventListener("DOMContentLoaded", async () => {
     await displayProducts(); 
     await displayCart();
 });
-
+// Open modal
 document.querySelector(".js-checkout-button").addEventListener("click", () => {
     const cart = getCart();
     const modal = document.querySelector(".order-modal-content");
@@ -162,10 +177,12 @@ document.querySelector(".js-checkout-button").addEventListener("click", () => {
     document.querySelector(".js-order-confirmation-modal").classList.add("is-visible");
     document.querySelector(".js-overlay").classList.add("is-visible");
 });
+// Close modal
 document.querySelector(".js-overlay").addEventListener("click", () => {
     document.querySelector(".js-order-confirmation-modal").classList.remove("is-visible");
     document.querySelector(".js-overlay").classList.remove("is-visible");
 });
+// New order button
 document.querySelector(".btn-new-order").addEventListener("click", () => {
     localStorage.removeItem("cart");
     location.reload();
@@ -174,8 +191,24 @@ document.querySelector(".btn-new-order").addEventListener("click", () => {
     document.querySelector(".js-overlay").classList.remove("is-visible");
     document.top.scrollIntoView({ behavior: "smooth" });
 });
+// Go to cart button
 window.addEventListener("scroll", checkCartVisibility);
-
 document.querySelector(".go-to-cart").addEventListener("click", () => {
     document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
 });
+// Back to top button
+(() => {
+    const backToTopBtn = document.querySelector(".js-back-to-top");
+    backToTopBtn.style.display = "none";
+
+    const toggleVisibility = () => {
+        backToTopBtn.style.display = window.scrollY > 100 ? "block" : "none";
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+})();
+

@@ -180,7 +180,7 @@ aside {
 }
 .h2-title-products {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 1rem;
   color: var(--rose-900);
   padding: 0 1rem;
@@ -259,6 +259,7 @@ aside {
 .total-price-wrapper {
   font-size: 24px;
   font-weight: 700;
+  color: var(--rose-900);
 }
 .btn-new-order,
 .footer-cart .btn {
@@ -339,9 +340,32 @@ aside {
   padding: 20px;
   background-color: var(--rose-50);
   margin-bottom: 1rem;
+  color: var(--rose-900);
 }
 .go-to-cart {
   display: none;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  background-color: var(--red);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  align-content: center;
+}
+.attribution {
+  text-align: center;
+}
+.title-page {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 1rem;
 }
 @media (max-width: 1019px) {
   .section-page{

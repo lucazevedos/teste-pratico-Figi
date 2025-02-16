@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,43 @@
   <!-- Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./stylesheets/style.css">
-
-  <!-- Scripts -->
-  <script src="./scripts/index.js" type="module"></script>
+  <link rel="stylesheet" href="./stylesheets/skeleton.css">
 </head>
+
 <body>
   <main>
     <h1 class="title-page"> Teste Prático - Desenvolvedor(a) Front-End Shopify e Integrações.</h1>
+    <div class="attribution">
+      Repositorio do projeto <a rel="noopener noreferrer" target="_blank" href="https://github.com/lucazevedos/teste-pratico-Figi">Lucas Azevedo</a>.
+    </div>
     <section class="section-page">
       <div class="section-products-all">
         <h2 class="h2-title-products">Products</h2>
-        <div class="product-list" id="product-list"></div>
+        <div class="product-list" id="product-list">
+          <div class="skeleton-card skeleton">
+            <div class="skeleton-img skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-button skeleton"></div>
+          </div>
+
+          <div class="skeleton-card skeleton">
+            <div class="skeleton-img skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-button skeleton"></div>
+          </div>
+
+          <div class="skeleton-card skeleton">
+            <div class="skeleton-img skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-button skeleton"></div>
+          </div>
+        </div>
       </div>
       <aside id="cart">
         <div class="cart-wrapper js-cart-summary">
@@ -32,7 +57,7 @@
               <div class="total-price-wrapper">R$<span class="total-price-value"></span></div>
             </div>
             <button class="btn btn-primary js-checkout-button">Confirm Order</button>
-        </div>
+          </div>
       </aside>
     </section>
     <div class="overlay js-overlay"></div>
@@ -40,7 +65,8 @@
       <div class="order-modal-wrapper">
         <img src="./assets/images/icon-order-confirmed.svg" alt="Order Confirmed" class="order-confirmation-image">
         <h2 class="h2-title">Order Confirmed</h2>
-        <p class="order-confirmation-message">Thank you for your order. We will contact you as soon as your package is shipped.</p>
+        <p class="order-confirmation-message">Thank you for your order. We will contact you as soon as your package is
+          shipped.</p>
       </div>
       <div class="order-modal-content"></div>
       <div class="order-total-price">
@@ -52,10 +78,12 @@
     <div class="go-to-cart js-go-to-cart">
       <a class="btn btn-primary">Go to Cart</a>
     </div>
+    <div class="back-to-top js-back-to-top">
+      <a class="btn btn-primary">&#11105;</a>
+    </div>
   </main>
-  
-  <footer class="attribution"> 
-    Coded by <a rel="noopener noreferrer" href="https://github.com/CardboardPL">CardboardPL</a>.
-  </footer>
+  <script src="./scripts/index.js" type="module"></script>
+  <!-- Scripts -->
 </body>
+
 </html>
